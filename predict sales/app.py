@@ -1,25 +1,27 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
 import pickle
+import xgboost
+from bankLoanValidator import initXGBoost, prediction
+
+XG = xgboost.XGBClassifier()
 
 app = Flask(__name__)
 model = pickle.load(open('model.pkl', 'rb'))
 
 @app.route('/')
 def home():
+    initXGBoost(XG)
     return render_template('index.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
 
-    print(request.form.to_dict())
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
-    prediction = model.predict(final_features)
+    response = prediction(xg, final_features)
 
-    output = round(prediction[0], 2)
-
-    return render_template('index.html', prediction_text='Sales should be $ {}'.format(output))
+    return render_template('index.html', prediction_text='You bank loan has been $ {}'.format(response))
 
 
 

@@ -12,6 +12,7 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 
+    print(request.form.to_dict())
     int_features = [int(x) for x in request.form.values()]
     final_features = [np.array(int_features)]
     prediction = model.predict(final_features)
@@ -19,6 +20,8 @@ def predict():
     output = round(prediction[0], 2)
 
     return render_template('index.html', prediction_text='Sales should be $ {}'.format(output))
+
+
 
 @app.route('/results',methods=['POST'])
 def results():

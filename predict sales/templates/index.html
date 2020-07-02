@@ -17,15 +17,89 @@
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="name" placeholder="name" required="required" />
-      <input type="text" name="age" placeholder="age" required="required" />
-      <input type="text" name="marital" placeholder="marital" required="required" />
-      <input type="text" name="marital" placeholder="marital" required="required" />
-      <input type="text" name="marital" placeholder="marital" required="required" />
-      <input type="text" name="marital" placeholder="marital" required="required" />
-      <input type="text" name="marital" placeholder="marital" required="required" />
-      <input type="text" name="marital" placeholder="marital" required="required" />
-      <input type="text" name="marital" placeholder="marital" required="required" />
+    	<input type="text" name="age" placeholder="age" required="required" />
+      <select type="text" name="job" placeholder="job" required="required">
+        <option value=0>Unknown</option>
+        <option value=1>Admin</option>
+        <option value=2>Blue-collar</option>
+        <option value=3>Entrepreneur</option>
+        <option value=4>Housemaid</option>
+        <option value=5>Management</option>
+        <option value=6>Retired</option>
+        <option value=7>Self-employed</option>
+        <option value=8>Services</option>
+        <option value=9>Student</option>
+        <option value=10>Technician</option>
+        <option value=11>Unemployed</option>
+      </select> 
+      <select type="text" name="marital" placeholder="marital" required="required">
+        <option value=0>Unknown</option>
+        <option value=1>Divorced</option>
+        <option value=2>Married</option>
+        <option value=3>Single</option>
+      </select> 
+      <select type="text" name="education" placeholder="education" required="required">
+        <option value=0>Unknown</option>
+        <option value=1>Basic 4y</option>
+        <option value=2>Basic 6y</option>
+        <option value=3>Basic 9y</option>
+        <option value=4>High School</option>
+        <option value=5>Illiterate</option>
+        <option value=6>Professional course</option>
+        <option value=7>University Degree</option>
+      </select> 
+      <select type="text" name="default" placeholder="default" required="required">
+        <option value=0>Unknown</option>
+        <option value=1>No</option>
+        <option value=2>Yes</option>
+      </select> 
+      <select type="text" name="housing" placeholder="housing" required="required">
+        <option value=0>Unknown</option>
+        <option value=1>No</option>
+        <option value=2>Yes</option>
+      </select> 
+      <select type="text" name="loan" placeholder="loan" required="required">
+        <option value=0>Unknown</option>
+        <option value=1>No</option>
+        <option value=2>Yes</option>
+      </select> 
+      <select type="text" name="contact" placeholder="contact" required="required">
+        <option value=0>Cellular</option>
+        <option value=1>Telephone</option>
+      </select> 
+      <select type="text" name="month" placeholder="month" required="required">
+        <option value=0>April</option>
+        <option value=1>August</option>
+        <option value=2>December</option>
+        <option value=3>July</option>
+        <option value=4>June</option>
+        <option value=5>March</option>
+        <option value=6>May</option>
+        <option value=7>November</option>
+        <option value=8>October</option>
+        <option value=9>September</option>
+      </select> 
+      <select type="text" name="day_of_week" placeholder="day_of_week" required="required">
+        <option value=0>Friday</option>
+        <option value=1>Monday</option>
+        <option value=2>Thursday</option>
+        <option value=3>Tuesday</option>
+        <option value=4>Wednesday</option>
+      </select> 
+      <input type="text" name="duration" placeholder="duration" required="required" />
+      <input type="text" name="campaign" placeholder="campaign" required="required" />
+      <input type="text" name="pdays" placeholder="pdays" required="required" />
+      <input type="text" name="previous" placeholder="previous" required="required" />
+      <select type="text" name="poutcome" placeholder="poutcome" required="required">
+        <option value=0>Failure</option>
+        <option value=1>Nonexistent</option>
+        <option value=2>Success</option>
+      </select>
+      <input type="text" name="empvardate" placeholder="empvardate" required="required" />
+      <input type="text" name="conspriceidx" placeholder="conspriceidx" required="required" />
+      <input type="text" name="consconfidx" placeholder="consconfidx" required="required" />
+      <input type="text" name="euribor3m" placeholder="euribor3m" required="required" />
+      <input type="text" name="nremployed" placeholder="nremployed" required="required" />
 
 
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict sales in third month</button>

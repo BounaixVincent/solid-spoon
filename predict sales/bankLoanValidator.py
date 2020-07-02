@@ -5,7 +5,7 @@
 Un total de 20000 demandes de prêts acceptées ou non suivant leurs situations personnelles et professionnelles (age, niveau d'études, métiers, salaire, etc) vont être étudiées afin d'automatiser les futures demandes.
 """
 
-export def initXGBoost(xg):
+def initXGBoost(xg):
     # Commented out IPython magic to ensure Python compatibility.
     # importing libraries
     import pandas as pd
@@ -69,7 +69,7 @@ export def initXGBoost(xg):
     xg.fit(X_train, y_train)
     print(" XG boost: {: .2f}%".format(xg.score(X_test, y_test)*100))
 
-export def prediction(xg, inputs):
+def prediction(xg, inputs):
     data= np.array(inputs, ndmin=2)
     prediction = xg.predict(data)
     if prediction == 1:

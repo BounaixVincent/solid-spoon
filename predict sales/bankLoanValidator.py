@@ -5,19 +5,21 @@
 Un total de 20000 demandes de prêts acceptées ou non suivant leurs situations personnelles et professionnelles (age, niveau d'études, métiers, salaire, etc) vont être étudiées afin d'automatiser les futures demandes.
 """
 
+# Commented out IPython magic to ensure Python compatibility.
+# importing libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+# %matplotlib inline
+import seaborn as sns
+
+
+import warnings
+warnings.filterwarnings('ignore')
+# execute  !pip install new_pkg_name for installing new packages
+
+
 def initXGBoost(xg):
-    # Commented out IPython magic to ensure Python compatibility.
-    # importing libraries
-    import pandas as pd
-    import numpy as np
-    import matplotlib.pyplot as plt
-    # %matplotlib inline
-    import seaborn as sns
-
-    import warnings
-    warnings.filterwarnings('ignore')
-    # execute  !pip install new_pkg_name for installing new packages
-
     data = pd.read_csv('bank-data-training.csv')
 
     job_map = {'unknown': 0, 'admin.': 1, 'blue-collar': 2, 'entrepreneur': 3, 'housemaid': 4, 'management': 5, 'retired': 6, 
@@ -29,8 +31,8 @@ def initXGBoost(xg):
     housing_map = {'unknown': 0, 'no': 1, 'yes': 2}
     loan_map = {'unknown': 0, 'no': 1, 'yes': 2}
     contact_map = {'cellular': 0, 'telephone': 1}
-    month_map = {'apr': 0, 'aug': 1, 'dec': 2, 'jul': 3, 'jun': 4, 'mar': 5, 'may': 6, 'nov': 7, 'oct': 8, 'sep': 9}
-    day_map = {'fri': 0, 'mon': 1, 'thu': 2, 'tue': 3, 'wed': 4}
+    month_map = {'jan': 0, 'feb': 1, 'mar': 2, 'apr': 3, 'may': 4, 'jun': 5, 'jul': 6, 'aug': 7, 'sep': 8, 'oct': 9, 'nov': 10, 'dec': 11}
+    day_map = {'mon': 0, 'tue': 1, 'wed': 2, 'thu': 3, 'fri': 4}
     poutcome_map = {'failure': 0, 'nonexistent': 1, 'success': 2}
     y_map = {'no': 0, 'yes': 1}
 
@@ -73,6 +75,8 @@ def prediction(xg, inputs):
     data= np.array(inputs, ndmin=2)
     prediction = xg.predict(data)
     if prediction == 1:
+        print("hello")
         return 'accepted.'
     else: 
+        print("coucou")
         return 'refused.'

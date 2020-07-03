@@ -2,115 +2,201 @@
 <html >
 <head>
   <meta charset="UTF-8">
-  <title>Deployment Tutorial 1</title>
+  <title>Bank Loan Validator</title>
   <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   
 </head>
 
-<body style="background: #000;">
- <div class="login">
-	<h1>Salut bolosse tu veux souscrire un prêt ?</h1>
-
-     <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="age" placeholder="age" required="required" />
-      <select type="text" name="job" placeholder="job" required="required">
-        <option value=0>Unknown</option>
-        <option value=1>Admin</option>
-        <option value=2>Blue-collar</option>
-        <option value=3>Entrepreneur</option>
-        <option value=4>Housemaid</option>
-        <option value=5>Management</option>
-        <option value=6>Retired</option>
-        <option value=7>Self-employed</option>
-        <option value=8>Services</option>
-        <option value=9>Student</option>
-        <option value=10>Technician</option>
-        <option value=11>Unemployed</option>
-      </select> 
-      <select type="text" name="marital" placeholder="marital" required="required">
-        <option value=0>Unknown</option>
-        <option value=1>Divorced</option>
-        <option value=2>Married</option>
-        <option value=3>Single</option>
-      </select> 
-      <select type="text" name="education" placeholder="education" required="required">
-        <option value=0>Unknown</option>
-        <option value=1>Basic 4y</option>
-        <option value=2>Basic 6y</option>
-        <option value=3>Basic 9y</option>
-        <option value=4>High School</option>
-        <option value=5>Illiterate</option>
-        <option value=6>Professional course</option>
-        <option value=7>University Degree</option>
-      </select> 
-      <select type="text" name="default" placeholder="default" required="required">
-        <option value=0>Unknown</option>
-        <option value=1>No</option>
-        <option value=2>Yes</option>
-      </select> 
-      <select type="text" name="housing" placeholder="housing" required="required">
-        <option value=0>Unknown</option>
-        <option value=1>No</option>
-        <option value=2>Yes</option>
-      </select> 
-      <select type="text" name="loan" placeholder="loan" required="required">
-        <option value=0>Unknown</option>
-        <option value=1>No</option>
-        <option value=2>Yes</option>
-      </select> 
-      <select type="text" name="contact" placeholder="contact" required="required">
-        <option value=0>Cellular</option>
-        <option value=1>Telephone</option>
-      </select> 
-      <select type="text" name="month" placeholder="month" required="required">
-        <option value=0>April</option>
-        <option value=1>August</option>
-        <option value=2>December</option>
-        <option value=3>July</option>
-        <option value=4>June</option>
-        <option value=5>March</option>
-        <option value=6>May</option>
-        <option value=7>November</option>
-        <option value=8>October</option>
-        <option value=9>September</option>
-      </select> 
-      <select type="text" name="day_of_week" placeholder="day_of_week" required="required">
-        <option value=0>Friday</option>
-        <option value=1>Monday</option>
-        <option value=2>Thursday</option>
-        <option value=3>Tuesday</option>
-        <option value=4>Wednesday</option>
-      </select> 
-      <input type="text" name="duration" placeholder="duration" required="required" />
-      <input type="text" name="campaign" placeholder="campaign" required="required" />
-      <input type="text" name="pdays" placeholder="pdays" required="required" />
-      <input type="text" name="previous" placeholder="previous" required="required" />
-      <select type="text" name="poutcome" placeholder="poutcome" required="required">
-        <option value=0>Failure</option>
-        <option value=1>Nonexistent</option>
-        <option value=2>Success</option>
-      </select>
-      <input type="text" name="empvardate" placeholder="empvardate" required="required" />
-      <input type="text" name="conspriceidx" placeholder="conspriceidx" required="required" />
-      <input type="text" name="consconfidx" placeholder="consconfidx" required="required" />
-      <input type="text" name="euribor3m" placeholder="euribor3m" required="required" />
-      <input type="text" name="nremployed" placeholder="nremployed" required="required" />
 
 
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict sales in third month</button>
-    </form>
-
-   <br>
-   <br>
-   {{ prediction_text }}
-
- </div>
+<body>
+  {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      {% for message in messages %}
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+              <strong>{{ message }}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  <div class="form-container">
+    <div class="login">
+      <h2>Bank Loan Validator</h2>
+    
+         <!-- Main Input For Receiving Query to our ML -->
+        <form action="{{ url_for('predict')}}"method="post">
+          <div class="inputContainer">
+              <div class="customInputBox">
+                <label for="age">Age</label>
+                <input class="customInput" type="text" name="age" id="age" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="job">Job</label>
+                <select class="customInput" type="text" name="job" id="job" required="required">
+                  <option value=0>Unknown</option>
+                  <option value=1>Admin</option>
+                  <option value=2>Blue-collar</option>
+                  <option value=3>Entrepreneur</option>
+                  <option value=4>Housemaid</option>
+                  <option value=5>Management</option>
+                  <option value=6>Retired</option>
+                  <option value=7>Self-employed</option>
+                  <option value=8>Services</option>
+                  <option value=9>Student</option>
+                  <option value=10>Technician</option>
+                  <option value=11>Unemployed</option>
+                </select> 
+              </div>
+              <div class="customInputBox">
+                <label for="marital">Marital status</label>
+                <select class="customInput" type="text" name="marital" id="marital" required="required">
+                  <option value=0>Unknown</option>
+                  <option value=1>Divorced</option>
+                  <option value=2>Married</option>
+                  <option value=3>Single</option>
+                </select> 
+              </div>
+              <div class="customInputBox">
+                <label for="education">Education level</label>
+                <select class="customInput" type="text" name="education" id="education" required="required">
+                  <option value=0>Unknown</option>
+                  <option value=1>Basic 4y</option>
+                  <option value=2>Basic 6y</option>
+                  <option value=3>Basic 9y</option>
+                  <option value=4>High School</option>
+                  <option value=5>Illiterate</option>
+                  <option value=6>Professional course</option>
+                  <option value=7>University Degree</option>
+                </select>
+              </div>
+              <div class="customInputBox">
+                <label for="default">Default credit</label>
+                <select class="customInput" type="text" name="default" id="default" required="required">
+                  <option value=0>Unknown</option>
+                  <option value=1>No</option>
+                  <option value=2>Yes</option>
+                </select> 
+              </div>
+              <div class="customInputBox">
+                <label for="housing">Housing loan</label>
+                <select class="customInput" type="text" name="housing" id="housing" required="required">
+                  <option value=0>Unknown</option>
+                  <option value=1>No</option>
+                  <option value=2>Yes</option>
+                </select> 
+              </div>
+              <div class="customInputBox">
+                <label for="loan">Personal loan</label>
+                <select class="customInput" type="text" name="loan" id="loan" required="required">
+                  <option value=0>Unknown</option>
+                  <option value=1>No</option>
+                  <option value=2>Yes</option>
+                </select>
+              </div>
+              <div class="customInputBox">
+                <label for="contact">Contact type</label>
+                <select class="customInput" type="text" name="contact" id="contact" required="required">
+                  <option value=0>Cellular</option>
+                  <option value=1>Telephone</option>
+                </select> 
+              </div>
+              <div class="customInputBox">
+                <label for="month">Last contact - Month</label>
+                <select class="customInput" type="text" name="month" id="month" required="required">
+                  <option value=0>January</option>
+                  <option value=1>February</option>
+                  <option value=2>March</option>
+                  <option value=3>April</option>
+                  <option value=4>May</option>
+                  <option value=5>June</option>
+                  <option value=6>July</option>
+                  <option value=7>August</option>
+                  <option value=8>September</option>
+                  <option value=9>October</option>
+                  <option value=10>November</option>
+                  <option value=11>December</option>
+                </select> 
+              </div>
+              <div class="customInputBox">
+                <label for="day">Last contact - Day</label>
+                <select class="customInput" type="text" name="day_of_week" id="day" required="required">
+                  <option value=0>Monday</option>
+                  <option value=1>Tuesday</option>
+                  <option value=2>Wednesday</option>
+                  <option value=3>Thursday</option>
+                  <option value=4>Friday</option>
+                </select>
+              </div>
+              <div class="customInputBox">
+                <label for="duration">Last contact - Duration</label>
+                <input class="customInput" type="text" name="duration" id="duration" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="campaign">Nb of contacts in this campaign</label>
+                <input class="customInput" type="text" name="campaign" id="campaign" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="pdays">Days since last time</label>
+                <input class="customInput" type="text" name="pdays" id="pdays" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="previous">Nb of contacts before</label>
+                <input class="customInput" type="text" name="previous" id="previous" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="poutcome">Previous outcome</label>
+                <select class="customInput" type="text" name="poutcome" id="poutcome" required="required">
+                  <option value=0>Failure</option>
+                  <option value=1>Nonexistent</option>
+                  <option value=2>Success</option>
+                </select>
+              </div>
+              <div class="customInputBox">
+                <label for="empvardate">Employment variation rate</label>
+                <input class="customInput" type="text" name="empvardate" id="empvardate" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="conspriceidx">Consumer price index</label>
+                <input class="customInput" type="text" name="conspriceidx" id="conspriceidx" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="consconfidx">Consumer confidence index </label>
+                <input class="customInput" type="text" name="consconfidx" id="consconfidx" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="euribor3m">Euribor 3-month rate</label>
+                <input class="customInput" type="text" name="euribor3m" id="euribor3m" required="required" />
+              </div>
+              <div class="customInputBox">
+                <label for="nremployed">Number of employees</label>
+                <input class="customInput" type="text" name="nremployed" id="nremployed" required="required" />
+              </div>
+          </div>
+          
+    
+    
+          <button type="submit" class="btn btn-primary btn-block btn-large">Check loan request</button>
+        </form>
+    
+       <br>
+       <br>
+     </div>
+  </div>
+ 
 
 
 </body>
+
 </html>
